@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -26,5 +27,13 @@ namespace CinemaGo
             hh.Content = moviesListBox.SelectedItem;
             hh.Visibility = Visibility.Visible;
         }
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            string url = e.Uri.AbsoluteUri;
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+            e.Handled = true;
+        }
+
+
     }
 }

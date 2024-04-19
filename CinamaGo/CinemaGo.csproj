@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="View\cinema_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="View\cinema_icon.png" />
+  </ItemGroup>
+
 </Project>

@@ -19,5 +19,7 @@ namespace CinemaGo.Model
         
         public string Rating { get; set; }
         public string ImageURL { get; set; }
+
+        public string DescriptionURL { get; set; }
     }
 }

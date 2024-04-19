@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CinemaGo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="620">
+        Title="CinemaGo" Height="450" Width="620" Background="Black" Icon="/View/cinema_icon.png">
 
     <Window.Resources>
         <DataTemplate x:Key="FieldTemp">
@@ -16,42 +16,44 @@
         </DataTemplate>
         <DataTemplate x:Key="FieldTemp2">
             <StackPanel Orientation="Vertical">
-                <Image Source="{Binding ImageURL}" Height="250" Width="200" Margin="0,0,10,0"/>
+                <Image Source="{Binding ImageURL}" Height="270" Width="220"/>
                 <StackPanel>
-                    <Label FontSize="25" Content="{Binding Title}"></Label>
-                    <Label Content="{Binding ReleaseDate}"></Label>
-                    <Label Content="{Binding Country}"></Label>
-                    <Label Content="{Binding Producer}"></Label>
-                    <Label Content="{Binding Actors}"></Label>
-                    <Label Content="{Binding Description}"></Label>
-                    <Label Content="{Binding Slogan}"></Label>
-                    <Label Content="{Binding Genre}"></Label>
-                    <Label Content="{Binding Rating}"></Label>
+                    <Label Foreground="Wheat" FontSize="40">CinemaGo</Label>
+                    <Label Foreground = "White" FontFamily="Verdana" FontSize="30" Content="{Binding Title}"></Label>
+                    <Label Foreground = "White" FontSize = "15" Content="{Binding ReleaseDate}"></Label>
+                    <Label Foreground = "White" FontSize = "15" Content="{Binding Country}"></Label>
+                    <Label Foreground = "White" FontSize = "15" Content="{Binding Producer}"></Label>
+                    <Label Foreground = "White" FontSize = "15" Content="{Binding Actors}"></Label>
+                    <Label Foreground = "White" FontSize = "15" Content="{Binding Description}"></Label>
+                    <Label Foreground = "White" FontSize = "15" Content="{Binding Slogan}"></Label>
+                    <Label Foreground = "White" FontSize = "15" Content="{Binding Genre}"></Label>
+                    <Label Foreground = "White" FontSize = "15" Content="{Binding Rating}"></Label>
+                    <TextBlock>
+                <Hyperlink NavigateUri="{Binding DescriptionURL}" RequestNavigate="Hyperlink_RequestNavigate">
+                    <TextBlock Cursor="Hand" FontSize="15" Text="Посмотреть фильм"/>
+                </Hyperlink>
+            </TextBlock>
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
     <Grid>
-
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.7*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <ListBox x:Name="moviesListBox" Grid.Column="1"
+        <ListBox Background="Black" Foreground="Bisque" x:Name="moviesListBox" Grid.Column="1"
                  ItemsSource="{Binding Fields}"
                  ItemTemplate="{StaticResource FieldTemp}">
+
         </ListBox>
-
-         
         <Button Grid.Column="1" Content="Подробнее" Click="DetailsButton_Click"     
-                VerticalAlignment="Bottom"/>
-
+                VerticalAlignment="Bottom" Grid.ColumnSpan="1"/>
         <ScrollViewer x:Name="hh" Grid.Column="0" ContentTemplate="{StaticResource FieldTemp2}"
-                        Content="{Binding ElementName=moviesListBox, Path=SelectedItem}"
-                        Visibility="Collapsed"/>
-
+                 Content="{Binding ElementName=moviesListBox, Path=SelectedItem}"
+                 Visibility="Collapsed"
+                 VerticalScrollBarVisibility="Auto" 
+                 HorizontalScrollBarVisibility="Auto" 
+                 CanContentScroll="True"/>
     </Grid>
-
 </Window>
